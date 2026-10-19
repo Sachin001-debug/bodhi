@@ -1,0 +1,262 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: var(--color-primary);
+  --color-primary-hover: var(--color-primary-hover);
+  --color-primary-soft: var(--color-primary-soft);
+  --color-accent: var(--color-accent);
+  --color-bg: var(--color-bg);
+  --color-bg-alt: var(--color-bg-alt);
+  --color-surface: var(--color-surface);
+  --color-text: var(--color-text);
+  --color-text-muted: var(--color-text-muted);
+  --color-border: var(--color-border);
+  --color-overlay: var(--color-overlay);
+
+  --font-heading: var(--font-heading);
+  --font-body: var(--font-body);
+
+  --shadow-soft: var(--shadow-soft);
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius-md);
+}
+
+:root {
+  --color-primary: #1F4D3A;
+  --color-primary-hover: #173C2D;
+  --color-primary-soft: #E8F0EB;
+  --color-accent: #B8975A;          /* muted champagne gold, sparingly */
+
+  --color-bg: #FFFFFF;
+  --color-bg-alt: #F7F8F6;
+  --color-surface: #FFFFFF;
+  --color-text: #1A1F1C;
+  --color-text-muted: #5E6A63;
+  --color-border: #E3E8E4;
+  --color-overlay: rgba(15, 30, 22, 0.45);
+
+  --font-heading: 'Cormorant Garamond', serif;
+  --font-body: 'Inter', sans-serif;
+  --text-display: clamp(2.75rem, 6vw, 5.5rem);
+  --text-h1: clamp(2.25rem, 4.5vw, 4rem);
+  --text-h2: clamp(1.75rem, 3vw, 2.75rem);
+  --text-body: 1rem;
+  --text-label: 0.75rem;
+  --tracking-label: 0.22em;
+
+  --container-max: 1200px;
+  --section-pad-y: clamp(4rem, 9vw, 8rem);
+  --radius-sm: 2px;
+  --radius-md: 6px;
+  --shadow-soft: 0 10px 40px rgba(20, 40, 30, 0.08);
+
+  --ease-premium: cubic-bezier(0.22, 1, 0.36, 1);
+  --dur-fast: 250ms;
+  --dur-base: 700ms;
+  --dur-slow: 1100ms;
+  --reveal-distance: 28px;
+  --touch-target: 44px;
+  --navbar-height: 80px;
+}
+
+/* Lighter motion on phones */
+@media (max-width: 767px) {
+  :root {
+    --dur-base: 500ms;
+    --dur-slow: 800ms;
+    --reveal-distance: 16px;
+    --navbar-height: 64px;
+  }
+}
+
+
+
+html {
+  scroll-padding-top: var(--navbar-height);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom Selection */
+::selection {
+  background-color: var(--color-primary-soft);
+  color: var(--color-primary);
+}
+
+/* Scroll margin offset for anchored navigation */
+[id] {
+  scroll-margin-top: calc(var(--navbar-height) + 16px);
+}
+
+/* Base Reveal Animation States */
+.reveal-init {
+  opacity: 0;
+  will-change: transform, opacity;
+  transition-property: opacity, transform;
+  transition-timing-function: var(--ease-premium);
+}
+
+.reveal-init.fade-up {
+  transform: translateY(var(--reveal-distance));
+}
+
+.reveal-init.fade-down {
+  transform: translateY(calc(var(--reveal-distance) * -1));
+}
+
+.reveal-init.fade-left {
+  transform: translateX(var(--reveal-distance));
+}
+
+.reveal-init.fade-right {
+  transform: translateX(calc(var(--reveal-distance) * -1));
+}
+
+.reveal-init.fade-in {
+  transform: none;
+}
+
+.reveal-init.scale-in {
+  transform: scale(0.96);
+}
+
+.reveal-init.revealed {
+  opacity: 1;
+  transform: none;
+}
+
+/* Ken Burns slow hero effect */
+@keyframes kenburns {
+  0% {
+    transform: scale(1.08);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.animate-ken-burns {
+  animation: kenburns 14s var(--ease-premium) forwards;
+}
+
+@keyframes whatsapp-pulse {
+  0%,
+  100% {
+    opacity: 0.2;
+    transform: scale(0.96);
+  }
+  50% {
+    opacity: 0.45;
+    transform: scale(1.08);
+  }
+}
+
+.whatsapp-glow {
+  position: relative;
+  isolation: isolate;
+  box-shadow: 0 0 0 2px rgba(37, 211, 102, 0.16), 0 4px 12px rgba(37, 211, 102, 0.24);
+}
+
+.whatsapp-glow::before {
+  position: absolute;
+  z-index: -1;
+  inset: -4px;
+  border-radius: inherit;
+  background: rgba(37, 211, 102, 0.3);
+  content: "";
+  filter: blur(4px);
+  animation: whatsapp-pulse 2.4s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.whatsapp-icon {
+  filter: drop-shadow(0 0 0.5px rgba(255, 255, 255, 0.35));
+}
+
+.whatsapp-welcome {
+  max-width: calc(100vw - 7rem);
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Text link animated underline */
+.link-underline {
+  position: relative;
+  display: inline-block;
+  text-decoration: none;
+}
+
+.link-underline::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 1px;
+  bottom: -2px;
+  left: 0;
+  background-color: currentColor;
+  transform-origin: bottom right;
+  transition: transform var(--dur-fast) var(--ease-premium);
+}
+
+.link-underline:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+/* Card gold line grow on hover */
+.card-hover-line {
+  position: relative;
+}
+
+.card-hover-line::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: var(--color-accent);
+  transition: width var(--dur-base) var(--ease-premium);
+}
+
+.card-hover-group:hover .card-hover-line::after {
+  width: 100%;
+}
+
+/* Reduced motion accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .reveal-init {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .animate-ken-burns {
+    animation: none !important;
+    transform: none !important;
+  }
+}
