@@ -76,7 +76,7 @@ export default function Navbar() {
             className="group flex items-center gap-2.5 rounded-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
           >
             <span className="grid place-items-center w-9 h-9 rounded-full border border-border text-primary transition-colors duration-500 group-hover:border-accent">
-              <LotusMark className="w-5 h-5" />
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTq3BbLX1MZ-xAsWTZZlAyp5bsZYhQeJ4rf5Tvz76o4Sg&s" className="rounded-full"/>
             </span>
             <span className="flex flex-col leading-none">
               <span className="font-heading text-[1.4rem] sm:text-[1.55rem] font-medium tracking-[0.03em] text-text transition-colors duration-300 group-hover:text-primary">

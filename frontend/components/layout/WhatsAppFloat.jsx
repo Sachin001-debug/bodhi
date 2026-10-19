@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { buildWhatsAppLink } from "@/lib/contact";
 
-const WELCOME_MESSAGE = "Welcome! Chat with us.";
+const WELCOME_MESSAGE = "Welocome to Bodhi villa! You can contact via whatsapp too.";
 
 export default function WhatsAppFloat() {
   const [typedMessage, setTypedMessage] = useState("");
