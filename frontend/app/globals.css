@@ -78,6 +78,15 @@ html {
   font-family: var(--font-body);
 }
 
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
 body {
   min-height: 100vh;
   margin: 0;

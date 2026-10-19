@@ -66,7 +66,7 @@ export default function MenuContent() {
         menuPdf={menuData.menuPdf}
       />
 
-      <Section pad="default" bg="default">
+      <Section pad="none" bg="default" className="pb-[var(--section-pad-y)]">
         <Container>
           {menuData.categories.map((category) => {
             const photoBreak = PHOTO_BREAKS.find(
@@ -119,4 +119,3 @@ export default function MenuContent() {
     </>
   );
 }
-

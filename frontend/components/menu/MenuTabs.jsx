@@ -40,7 +40,7 @@ export default function MenuTabs({
   };
 
   return (
-    <div className="sticky top-[var(--navbar-height)] z-30 bg-surface/95 backdrop-blur-md border-b border-border shadow-xs py-2 transition-all">
+    <div className="sticky top-[calc(var(--navbar-height)-0.75rem)] z-30 bg-surface/95 backdrop-blur-md border-b border-border shadow-xs py-2 transition-all">
       <div className="w-full max-w-[var(--container-max)] mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4">
         {/* Scrollable Tabs */}
         <div
@@ -98,4 +98,3 @@ export default function MenuTabs({
     </div>
   );
 }
-
